@@ -1,0 +1,14 @@
+- hosts: all
+
+  pre_tasks:
+
+    - name: install roles from install_roles.yml
+      local_action: command ansible-galaxy install -r galaxy.yml --force -p ~/
+      become: false
+      run_once: true
+
+  roles:
+
+    - { role: MyTomcat }
+    - { role: MyMonit }
+
